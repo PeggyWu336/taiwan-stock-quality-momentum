@@ -51,6 +51,19 @@ Composite score = 2 x z(Sharpe) + z(CAGR) + z(-MDD), standardized across the 12 
 | 2015-2019 | 16.82% | 10.95% | 0.63 | 0.94 |
 | 2020-2025 | 22.15% | 22.19% | 0.69 | 1.05 |
 
+### Tuned specification
+
+The top-ranked combination in the parameter grid (free float >= 40%, market cap above the 30th percentile, turnover above the 50th percentile, top 15% by quality) gives Q_M9_Top5 a CAGR of 20.86%, a Sharpe of 0.69 and a max drawdown of -66.94%. Its Sharpe is still below 0050's 0.73, and its sub-period results are even less stable:
+
+| Period | CAGR | Sharpe | Max drawdown | 0050 Sharpe |
+|---|---|---|---|---|
+| 2005-2009 | 30.3% | 0.76 | -66.9% | 0.47 |
+| 2010-2014 | 11.3% | 0.59 | -36.5% | 0.54 |
+| 2015-2019 | -3.4% | -0.05 | -49.7% | 0.94 |
+| 2020-2025 | 49.8% | 1.13 | -25.5% | 1.05 |
+
+Even the best combination out of 486 loses money over a full five-year period (2015-2019). To reproduce, set `TURNOVER_PCT = 0.5` and `QUALITY_TOP_PCT = 0.15` at the top of the script and rerun.
+
 ### Takeaways
 
 - **No strategy beats 0050 on Sharpe ratio or drawdown.** The best CAGR (Q_M9_Top5) is about 1.4 percentage points per year above 0050, with roughly twice the volatility and a -80% drawdown.
@@ -79,6 +92,8 @@ Data comes from TEJ (Taiwan Economic Journal) and is **not included** in this re
 - 0050 monthly adjusted close prices (benchmark)
 
 Sample period: 2005-01 to 2025-10.
+
+Universe: common stocks only, excluding TDRs and KY-listed companies.
 
 ## Repository structure
 
